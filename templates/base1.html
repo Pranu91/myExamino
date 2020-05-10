@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Examino</title>
+  </head>
+  <body>
+  {% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-1">
+    <h1><a class="navbar-brand" href="{% url 'home' %}" >Examino</a></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+           <div class=" navbar navbar-right">
+               {% if user.is_authenticated %}
+
+
+              <h4 style="color:white "> Welcome {{request.user}}</h4>
+
+
+
+  {% endif %}
+
+       </div>
+
+
+      <li class="nav-item active mx-4">
+        <a class="btn btn-warning" href="/joinedclasses">Joined Classrooms<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active ">
+        <a class="nav-link" data-toggle="modal" data-target="#loginmodal"></a>
+      </li>
+
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <div class="alert alert-success" role="alert">
+       {% if msg %}
+       <p  style="color:black">OOps! {{msg}}</p>
+
+      {% endif %}
+
+
+  <div class="container my-2">
+<!-- new navbar -->
+<div class="container">
+  <div class="container">
+
+    <h1 class="display-4">EXAMINO PORTAL</h1>
+    <p class="lead">A portal with Advanced Analytical Tools .</p>
+  </div>
+
+  <div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Join Classroom</h1>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+           <form  method="post" action="{% url 'join' %}" >
+     {% csrf_token %}
+  <div class="form-group">
+
+    <input type="text" class="form-control" id="join_code" name="join_code" placeholder="Enter class code">
+  </div>
+                <div class="form-group">
+
+    <input type="hidden" class="form-control" id="user_name" name="user_name" value="{{request.user}}">
+  </div>
+
+
+
+     <button  type="submit" class="btn btn-info mx-5">Join Classroom</button>
+ </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </div>
+  </div>
+
+
+  <div class="container">
+        <div style="background-image:url('https://media1.tenor.com/images/b22fc9fc653e9e9c9c11aecac25afb0d/tenor.gif?itemid=16198086');">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">© 2017-2019</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cool stuff</a></li>
+          <li><a class="text-muted" href="#">Random feature</a></li>
+          <li><a class="text-muted" href="#">Team feature</a></li>
+          <li><a class="text-muted" href="#">Stuff for developers</a></li>
+          <li><a class="text-muted" href="#">Another one</a></li>
+          <li><a class="text-muted" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Resource</a></li>
+          <li><a class="text-muted" href="#">Resource name</a></li>
+          <li><a class="text-muted" href="#">Another resource</a></li>
+          <li><a class="text-muted" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- central modal for create classroom -->
+
+
+
+
+
+
+  <!-- modal for join classroom -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
